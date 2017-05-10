@@ -5,9 +5,11 @@ import ipgetter
 #leggo da file l'ultimo messagio a cui ero arrivato
 
 dati = open("up.txt","r")
+token = open("token.txt", "r")
 raw = dati.read()
+raw1 = token.read()
 offset = raw.split("\n")[0]
-tokien = raw.split("\n")[1]
+tokien = raw1.split("\n")[0]
 dati.close()
 
 #inizializza il bot
