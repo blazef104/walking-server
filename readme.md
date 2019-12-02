@@ -7,7 +7,7 @@ It is easy to setup: first just do `pip install -r requirements.txt` and then pu
 Changelog:
 ------
 #### 02/12/2019:
-   - Completely refactored and modernized the code. Now it uses up to date libraries. 
+   - Completely refactored and modernized the code. Now it uses up-to-date libraries. 
 ------
 
 ### Based on:
