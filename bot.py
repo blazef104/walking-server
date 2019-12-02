@@ -1,45 +1,22 @@
-# -*- coding: utf-8 -*-
-from twx.botapi import *
-import ipgetter
+import logging
+from telegram.ext import Updater, CommandHandler
+from ipgetter2 import IPGetter
 
-#leggo da file l'ultimo messagio a cui ero arrivato
+#logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-dati = open("up.txt","r")
-token = open("token.txt", "r")
-raw = dati.read()
-raw1 = token.read()
-offset = raw.split("\n")[0]
-tokien = raw1.split("\n")[0]
-dati.close()
+def ip(update, context):
+    getter = IPGetter()
+    ips=getter.get()
+    update.message.reply_text('Your ips:\n v4:{0}\n v6:{1}'.format(ips.v4,ips.v6))
 
-#inizializza il bot
-bot = TelegramBot(tokien)
-bot.update_bot_info().wait()
-print (bot.username)
+# main
 
-if (int(offset) != 0):
-    print ("offset iniziale: ", offset)
-else:
-    offset = 1
+tokenFile = open("token.txt", "r")
+token=tokenFile.readline()
 
-while True:
-    updates = bot.get_updates(offset).wait()
-    for update in updates:
-        print ("Nuovo update: ", update.update_id, "Da: ", update.message.sender.username, "\n")
-        offset = int(offset) + 1
-        if (update.message.text != None): #and update.update_id >= offset):
-            dati = open("up.txt", "w")
-            dati.seek(0)
-            dati.write(str(offset))
-            dati.close()
-            print ("Non ancora processato: ", update.update_id , update.message.text, "\n")
-            message = update.message.text.split()
-            #print (message)
-            for m in message:
-                if (m.lower() == "/ip"):
-                    ip = ipgetter.myip()
-                    print ("Rispondo a ", update.message.sender.username, "con l'ip  \n")
-                    bot.send_message(update.message.chat.id, "Here is the ip: " + ip)
-                else:
-                    print("Comando sconosciuto")
-                    bot.send_message(update.message.chat.id, "/ip is all I can do for you now")
+updater = Updater(token, use_context=True)
+
+updater.dispatcher.add_handler(CommandHandler('ip', ip))
+
+updater.start_polling()
+updater.idle()

@@ -1,14 +1,15 @@
-#Walking Server
+# Walking Server
+
 This is a simple telegram bot useful if you want to access your home server (with a dinamic ip) from anywhere.
-I've mine running on a raspberry and it works fine!
+It is easy to setup: first just do `pip install -r requirements.txt` and then put your token in token.txt
 
-## License
-The MIT License (MIT)
 
-Copyright (c) 2016 Giulio Ginesi
+Changelog:
+------
+#### 02/12/2019:
+   - Completely refactored and modernized the code. Now it uses up to date libraries. 
+------
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+### Based on:
+[python-telegram-bot API](https://github.com/python-telegram-bot/python-telegram-bot)
+[ipgetter2](https://pypi.org/project/ipgetter2/)

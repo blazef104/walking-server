@@ -1,2 +1,2 @@
-ipgetter==0.6
-twx==0.5a5
+ipgetter2==1.1.9
+python-telegram-bot
